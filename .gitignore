@@ -1,1 +1,30 @@
-/raw_data.csv
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment
+venv/
+*.env
+
+# DVC and data files
+.dvc/
+raw_data.csv
+processed_data.csv
+
+# Model files
+model.pkl
+*.dvc
+
+# MLFlow
+mlruns/
+
+# Databases
+*.db
+
+# Node.js
+node_modules/
+
+# Logs and IDE-specific files
+*.log
+.vscode/
