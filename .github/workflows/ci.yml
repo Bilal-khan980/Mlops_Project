@@ -41,7 +41,7 @@ jobs:
     # Build and Push Backend Docker image
     - name: Build and Push Backend Docker Image
       run: |
-        docker build -t bilalkhan980/mbackend:latest -f Backend/Dockerfile Backend/
+        docker build -t bilalkhan980/mbackend:latest -f Dockerfile .
         docker push bilalkhan980/mbackend:latest
 
     # Build and Push Frontend Docker image
