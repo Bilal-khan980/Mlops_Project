@@ -1,0 +1,23 @@
+name: CD Pipeline
+
+on:
+  push:
+    branches:
+      - prod
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Pull Docker Images
+      - name: Pull Docker Images
+        run: |
+          docker pull yourusername/backend:testing
+          docker pull yourusername/frontend:testing
+
+      # Apply Kubernetes Manifests
+      - name: Deploy to Kubernetes
+        run: |
+          kubectl apply -f k8s/backend-deployment.yaml
+          kubectl apply -f k8s/frontend-deployment.yaml
