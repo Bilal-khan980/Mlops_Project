@@ -43,7 +43,7 @@ jobs:
         docker build -t bilalkhan980/mbackend:latest -f Dockerfile .
         docker push bilalkhan980/mbackend:latest
 
-    # Build and Push Frontend Docker image
+    # Build and Push Frontend Docker 
     - name: Build and Push Frontend Docker Image
       run: |
         docker build -t bilalkhan980/mfrontend:latest -f my-app/Dockerfile my-app/
