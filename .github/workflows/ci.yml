@@ -1,12 +1,12 @@
-name: CI Pipeline
+name: Dev to Testing Workflow
 
 on:
   push:
     branches:
-      - testing
+      - dev
 
 jobs:
-  test-and-build:
+  ci-pipeline:
     runs-on: ubuntu-latest
 
     steps:
@@ -14,7 +14,30 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
 
-      # Setup Python for Backend
+      # Configure Git
+      - name: Configure Git User
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+      # Merge Dev into Testing
+      - name: Merge Dev into Testing
+        run: |
+          git checkout testing
+          git merge dev --no-ff --commit -m "Auto-merge dev into testing"
+          git push origin testing
+
+  test-and-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout testing branch
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          ref: testing
+
+      # Setup Python for Backend Tests
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
