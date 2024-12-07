@@ -21,7 +21,6 @@ apispec
 appdirs
 argcomplete
 asgiref
-async-timeout
 asyncssh
 atpublic
 attrs
@@ -70,7 +69,6 @@ dvc-studio-client
 dvc-task
 email_validator
 entrypoints
-exceptiongroup
 fastapi
 fastapi-cli
 filelock
