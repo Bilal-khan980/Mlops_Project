@@ -6,26 +6,6 @@ on:
       - dev
 
 jobs:
-  ci-pipeline:
-    runs-on: ubuntu-latest
-
-    steps:
-      # Checkout code
-      - name: Checkout Code
-        uses: actions/checkout@v2
-
-      # Configure Git
-      - name: Configure Git User
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-
-      # Merge Dev into Testing
-      - name: Merge Dev into Testing
-        run: |
-          git checkout testing
-          git merge dev --no-ff --commit -m "Auto-merge dev into testing"
-          git push origin testing
 
   test-and-build:
     runs-on: ubuntu-latest
