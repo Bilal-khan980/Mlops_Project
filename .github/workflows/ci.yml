@@ -1,54 +1,45 @@
-name: Dev to Testing Workflow
+name: CI Pipeline
 
 on:
   push:
     branches:
-      - dev
+      - testing
 
 jobs:
-
   test-and-build:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout testing branch
-      - name: Checkout Code
-        uses: actions/checkout@v2
-        with:
-          ref: testing
+    # Checkout the repository
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      # Setup Python for Backend Tests
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: "3.8"
+    # Set up Python environment
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
 
-      # Install dependencies and run tests
-      - name: Install Backend Dependencies
-        run: |
-          cd Backend
-          pip install -r requirements.txt
+    # Install dependencies for backend
+    - name: Install backend dependencies
+      run: |
+        cd Backend
+        pip install -r requirements.txt
 
-      - name: Run Backend Tests
-        run: |
-          cd Backend
-          pytest tests
+    # Run tests
+    - name: Run backend unit tests
+      run: |
+        cd Backend
+        pytest --maxfail=3 --disable-warnings
 
-      # Build Docker Images
-      - name: Build Backend Docker Image
-        run: |
-          docker build -t bilalkhan980/backend:testing ./backend
+    # Build and push Docker image
+    - name: Log in to DockerHub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build Frontend Docker Image
-        run: |
-          docker build -t bilalkhan980/frontend:testing ./my-app
-
-      # Push Docker Images to DockerHub
-      - name: Push Docker Images to DockerHub
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        run: |
-          echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-          docker push bilalkhan980/backend:testing
-          docker push bilalkhan980/frontend:testing
+    - name: Build and push Docker image
+      run: |
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/my-backend:latest ./Backend
+        docker push ${{ secrets.DOCKER_USERNAME }}/my-backend:latest
