@@ -6,10 +6,6 @@ from fastapi.middleware.cors import CORSMiddleware
 import pickle
 import pandas as pd
 
-# Importing from parent directory
-import sys
-from pathlib import Path
-
 
 from models import User, Base
 from database import engine, get_db
@@ -102,7 +98,7 @@ def login(request: LoginRequest, db: Session = Depends(get_db)):
         )
     return {"message": "Login successful"}
 
-# Weather Prediction Endpoint
+# Weather Prediction 
 with open('model.pkl', "rb") as f:
     model = pickle.load(f)
 

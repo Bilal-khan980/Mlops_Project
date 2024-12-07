@@ -28,7 +28,7 @@ jobs:
     - name: Run Unit Tests (Optional)
        
       run: |
-        pytest tests/tests_main.py
+        pytest tests_main.py
 
 
     - name: Log in to DockerHub
