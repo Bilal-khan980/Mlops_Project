@@ -25,7 +25,8 @@ jobs:
         pip install pytest
 
     - name: Run Unit Tests (Optional)
-      run: pytest Backend/tests/test_main.py
+       cd Backend
+      run: pytest tests/test_main.py
 
 
     - name: Log in to DockerHub
