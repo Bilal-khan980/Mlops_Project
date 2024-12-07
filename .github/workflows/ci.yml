@@ -26,22 +26,22 @@ jobs:
       # Install dependencies and run tests
       - name: Install Backend Dependencies
         run: |
-          cd backend
+          cd Backend
           pip install -r requirements.txt
 
       - name: Run Backend Tests
         run: |
-          cd backend
+          cd Backend
           pytest tests
 
       # Build Docker Images
       - name: Build Backend Docker Image
         run: |
-          docker build -t yourusername/backend:testing ./backend
+          docker build -t bilalkhan980/backend:testing ./backend
 
       - name: Build Frontend Docker Image
         run: |
-          docker build -t yourusername/frontend:testing ./my-app
+          docker build -t bilalkhan980/frontend:testing ./my-app
 
       # Push Docker Images to DockerHub
       - name: Push Docker Images to DockerHub
@@ -50,5 +50,5 @@ jobs:
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
         run: |
           echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-          docker push yourusername/backend:testing
-          docker push yourusername/frontend:testing
+          docker push bilalkhan980/backend:testing
+          docker push bilalkhan980/frontend:testing
