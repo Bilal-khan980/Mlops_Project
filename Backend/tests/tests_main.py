@@ -7,7 +7,7 @@ from fastapi import HTTPException
 from passlib.context import CryptContext  # Import passlib for password hashing
 
 # Add the project root directory to sys.path so Python can find mlops_project
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(_file_), '..')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from app import signup, login, predict  # Import from app.py
 from pydantic import BaseModel
