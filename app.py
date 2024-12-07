@@ -10,10 +10,6 @@ import pandas as pd
 import sys
 from pathlib import Path
 
-model_path = Path(__file__).resolve().parent / "model.pkl"
-# Add parent directory to sys.path to access models.py and database.py
-sys.path.append(str(Path(__file__).resolve().parent.parent))
-
 from models import User, Base
 from database import engine, get_db
 
@@ -106,7 +102,7 @@ def login(request: LoginRequest, db: Session = Depends(get_db)):
     return {"message": "Login successful"}
 
 # Weather Prediction Endpoint
-with open('Mlops_Project/model.pkl', "rb") as f:
+with open('model.pkl', "rb") as f:
     model = pickle.load(f)
 
 @app.post("/predict")

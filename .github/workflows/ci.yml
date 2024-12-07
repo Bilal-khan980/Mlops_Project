@@ -28,7 +28,6 @@ jobs:
     - name: Run Unit Tests (Optional)
        
       run: |
-        cd Backend 
         pytest tests/tests_main.py
 
 
