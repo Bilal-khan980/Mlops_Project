@@ -13,7 +13,7 @@ from database import engine, get_db
 # FastAPI app setup
 app = FastAPI()
 
-# CORS Configuration
+
 origins = [
     "http://localhost:3000",
 ]
