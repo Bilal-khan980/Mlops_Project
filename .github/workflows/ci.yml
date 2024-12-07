@@ -25,9 +25,6 @@ jobs:
         pip install passlib
         pip install pytest
 
-    
-
-
     - name: Log in to DockerHub
       uses: docker/login-action@v2
       with:
@@ -45,3 +42,13 @@ jobs:
       run: |
         docker build -t bilalkhan980/mfrontend:latest -f my-app/Dockerfile my-app/
         docker push bilalkhan980/mfrontend:latest
+
+    - name: Push dev branch to testing branch
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git checkout testing || git checkout -b testing
+        git merge --no-ff dev
+        git push origin testing
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
