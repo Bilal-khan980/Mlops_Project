@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  frontend:
+    image: bilalkhan980/mfrontend:latest
+    ports:
+      - "3000:80" # Map Nginx default port (80) to localhost:3000
+    networks:
+      - app-network
+
+  backend:
+    image: bilalkhan980/mbackend:latest
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:///./test.db # Replace with your DB URL if needed
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

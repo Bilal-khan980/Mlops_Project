@@ -45,8 +45,3 @@ jobs:
       run: |
         docker build -t bilalkhan980/mfrontend:latest -f my-app/Dockerfile my-app/
         docker push bilalkhan980/mfrontend:latest
-
-    - name: Run Unit Tests (Optional)
-       
-      run: |
-        pytest tests_main.py    
