@@ -21,14 +21,13 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
-        cd Backend
         pip install pytest
 
     - name: Run Unit Tests (Optional)
        
       run: |
         cd Backend 
-        pytest tests/test_main.py
+        pytest tests/tests_main.py
 
 
     - name: Log in to DockerHub
