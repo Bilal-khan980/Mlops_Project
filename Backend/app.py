@@ -105,8 +105,7 @@ def login(request: LoginRequest, db: Session = Depends(get_db)):
     return {"message": "Login successful"}
 
 # Weather Prediction Endpoint
-model_path = Path(__file__).resolve().parent.parent / "model.pkl"
-with open('Mlops_Project/model.pkl', "rb") as f:
+with open('./model.pkl', "rb") as f:
     model = pickle.load(f)
 
 @app.post("/predict")
