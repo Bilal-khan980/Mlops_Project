@@ -12,7 +12,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=sqlite:///./test.db # Replace with your DB URL if needed
+      - DATABASE_URL=sqlite:///./test.db 
     networks:
       - app-network
 
