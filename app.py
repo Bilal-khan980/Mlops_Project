@@ -10,7 +10,6 @@ import pandas as pd
 from models import User, Base
 from database import engine, get_db
 
-# FastAPI app setup
 app = FastAPI()
 
 
