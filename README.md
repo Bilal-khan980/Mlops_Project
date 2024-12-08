@@ -159,6 +159,19 @@ git commit -m "Add trained model"
 dvc push
 ```
 
+### 10. **Setup MLflow to check the model training each time a version is created**
+
+
+```bash
+pip install mlflow
+```
+```bash
+mlflow server \
+  --backend-store-uri sqlite:///mlflow.db \
+  --default-artifact-root ./mlruns \
+  --host 0.0.0.0 \
+  --port 5000
+```
 
 
 
