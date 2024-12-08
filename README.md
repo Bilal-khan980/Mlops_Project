@@ -61,4 +61,23 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
+### 3. **Download Packages Required**
+
+Once the repository is cloned, navigate to the project directory and build the Docker images using Docker Compose:
+
+```bash
+pip install dvc apache-airflow requests pandas scikit-learn
+```
+
+### 4. **Setup DVC**
+
+Once the repository is cloned, navigate to the project directory and build the Docker images using Docker Compose:
+
+```bash
+dvc init
+pip install 'dvc[gdrive]'
+dvc remote add -d myremote gdrive://<GDRIVE_FOLDER_ID>
+  
+```
+
 
