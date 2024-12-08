@@ -50,10 +50,10 @@ jobs:
     # Deploy the application to Minikube
     - name: Deploy Application to Testing Environment
       run: |
-       kubectl apply -f ./k8s/frontend-deployment.yaml
-       kubectl apply -f ./k8s/frontend-service.yaml
-       kubectl apply -f ./k8s/backend-deployment.yaml
-       kubectl apply -f ./k8s/backend-service.yaml
+       kubectl apply -f ./k8s/frontend_deployment.yaml
+       kubectl apply -f ./k8s/frontend_service.yaml
+       kubectl apply -f ./k8s/backend_deployment.yaml
+       kubectl apply -f ./k8s/backend_service.yaml
 
     # Verify the deployment
     - name: Verify Deployment
