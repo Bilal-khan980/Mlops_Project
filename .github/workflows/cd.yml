@@ -1,12 +1,12 @@
-name: CD Pipeline
+name: CD Pipeline - Testing Deployment
 
 on:
   push:
     branches:
-      - prod
+      - testing
 
 jobs:
-  deploy:
+  deploy-to-testing:
     runs-on: ubuntu-latest
 
     steps:
@@ -14,11 +14,18 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    # Set up kubectl
-    - name: Set up kubectl
-      uses: azure/setup-kubectl@v3
-      with:
-        version: 'v1.28.0'
+    # Set up Docker
+    - name: Set up Docker
+      uses: docker/setup-buildx-action@v2
+
+    # Pull the latest Docker images
+    - name: Pull Backend Docker Image
+      run: |
+        docker pull bilalkhan980/mbackend:latest
+
+    - name: Pull Frontend Docker Image
+      run: |
+        docker pull bilalkhan980/mfrontend:latest
 
     # Set up Minikube
     - name: Set up Minikube
@@ -28,8 +35,26 @@ jobs:
         sudo mv minikube /usr/local/bin/
         minikube start
 
-    # Deploy the application
-    - name: Deploy to Minikube
+    # Set up kubectl
+    - name: Set up kubectl
+      uses: azure/setup-kubectl@v3
+      with:
+        version: 'v1.28.0'
+
+    # Load Docker images into Minikube
+    - name: Load Docker Images into Minikube
+      run: |
+        minikube image load bilalkhan980/mbackend:latest
+        minikube image load bilalkhan980/mfrontend:latest
+
+    # Deploy the application to Minikube
+    - name: Deploy Application to Testing Environment
       run: |
         kubectl apply -f ./k8s/deployment.yaml
         kubectl apply -f ./k8s/service.yaml
+
+    # Verify the deployment
+    - name: Verify Deployment
+      run: |
+        kubectl get pods
+        kubectl get services
