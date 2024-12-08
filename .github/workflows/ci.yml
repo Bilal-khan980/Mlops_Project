@@ -52,11 +52,4 @@ jobs:
     - name: Run Docker Compose
       run: |
         docker-compose -f dockercompose.yml up -d
-
-
-    - name : Pushing to testing branch
-      run: |
-        git checkout testing
-        git merge dev
-        git commit -m "Hello"
-        git push -u origin testing     
+    
