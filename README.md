@@ -52,12 +52,24 @@ git clone https://github.com/<your-username>/weather-prediction-system.git
 cd weather-prediction-system 
 ```
 
+### 2. **Make a Virtual Environment**
+
+Once the repository is cloned, navigate to the project directory and build the Docker images using Docker Compose:
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+
+
 ### 2. **Build Docker Images**
 
 Once the repository is cloned, navigate to the project directory and build the Docker images using Docker Compose:
 
 ```bash
 docker-compose build
+```
 
 
 
