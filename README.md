@@ -54,7 +54,6 @@ cd Mlops_Project
 
 ### 2. **Make a Virtual Environment**
 
-Once the repository is cloned, navigate to the project directory and build the Docker images using Docker Compose:
 
 ```bash
 python3 -m venv venv
@@ -63,7 +62,6 @@ source venv/bin/activate
 
 ### 3. **Download Packages Required**
 
-Once the repository is cloned, navigate to the project directory and build the Docker images using Docker Compose:
 
 ```bash
 pip install dvc apache-airflow requests pandas scikit-learn
@@ -71,13 +69,21 @@ pip install dvc apache-airflow requests pandas scikit-learn
 
 ### 4. **Setup DVC**
 
-Once the repository is cloned, navigate to the project directory and build the Docker images using Docker Compose:
-
 ```bash
 dvc init
 pip install 'dvc[gdrive]'
 dvc remote add -d myremote gdrive://<GDRIVE_FOLDER_ID>
   
 ```
+
+### 5. **Collect Data using collection_data.py and process data using data_preprocessing.py**
+
+
+```bash
+python3 data_collection.py
+python3 data_preprocessing.py
+  
+```
+
 
 
