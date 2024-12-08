@@ -24,7 +24,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Initialize the database
+# Initialize the 
 Base.metadata.create_all(bind=engine)
 
 # Password hashing using Passlib
