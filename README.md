@@ -1,9 +1,31 @@
-# Weather Prediction System
+# **Weather Prediction System**
+
 A fully containerized weather prediction application deployed on Kubernetes, leveraging MLFlow for model tracking, Airflow for pipeline orchestration, and Flask for serving predictions.
 
-## Features
-Predicts weather using trained machine learning models.
-Fully containerized using Docker for portability and ease of deployment.
-Scalable deployment on Kubernetes.
-Tracks experiments with MLFlow.
-Automates workflows with Airflow.
+---
+
+## **Features**
+- Predicts weather using trained machine learning models.
+- Fully containerized using Docker for portability and ease of deployment.
+- Scalable deployment on Kubernetes.
+- Tracks experiments with MLFlow.
+- Automates workflows with Airflow.
+
+---
+
+## **Prerequisites**
+Ensure the following tools are installed on your system:
+- **Docker**
+- **Kubernetes** (Minikube or any Kubernetes cluster)
+- **kubectl**
+- **Python 3.8+**
+- **Helm** (for Kubernetes package management)
+
+---
+
+## **Setup**
+
+### 1. **Clone the Repository**
+```bash
+git clone https://github.com/<your-username>/weather-prediction-system.git
+cd weather-prediction-system
