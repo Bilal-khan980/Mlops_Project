@@ -111,7 +111,53 @@ airflow webserver --port 8080
 airflow scheduler
 ```
 
+### 8. **Create a folder in airflow named dags and a file in it named weather_pipeline.py**
 
+
+```bash
+from airflow import DAG
+from airflow.operators.python import PythonOperator
+from datetime import datetime
+from data_collection import fetch_weather_data
+from data_preprocessing import preprocess_data
+
+default_args = {
+    "owner": "airflow",
+    "start_date": datetime(2023, 1, 1),
+    "retries": 1,
+}
+
+with DAG(
+    "weather_pipeline",
+    default_args=default_args,
+    schedule_interval="@daily",
+) as dag:
+
+    collect_data = PythonOperator(
+        task_id="collect_data",
+        python_callable=fetch_weather_data,
+    )
+
+    preprocess = PythonOperator(
+        task_id="preprocess_data",
+        python_callable=preprocess_data,
+    )
+
+    collect_data >> preprocess
+
+```
+
+
+
+### 9. **Train model and track using DVC and airflow is used to train model continuously**
+
+
+```bash
+dvc add model.pkl
+git add model.pkl model.pkl.dvc
+git commit -m "Add trained model"
+dvc push
+```
 
 
 
