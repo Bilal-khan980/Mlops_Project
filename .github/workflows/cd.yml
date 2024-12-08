@@ -35,6 +35,11 @@ jobs:
         sudo mv minikube /usr/local/bin/
         minikube start
 
+    # Display Minikube IP
+    - name: Display Minikube IP
+      run: |
+        minikube ip    
+
     # Set up kubectl
     - name: Set up kubectl
       uses: azure/setup-kubectl@v3
