@@ -47,5 +47,17 @@ Before you begin, ensure the following are installed on your system:
 
 ### 1. **Clone the Repository**
 ```bash
+
 git clone https://github.com/<your-username>/weather-prediction-system.git
-cd weather-prediction-system
+cd weather-prediction-system 
+```
+
+### 2. **Build Docker Images**
+
+Once the repository is cloned, navigate to the project directory and build the Docker images using Docker Compose:
+
+```bash
+docker-compose build
+
+
+
