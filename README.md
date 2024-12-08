@@ -85,5 +85,34 @@ python3 data_preprocessing.py
   
 ```
 
+### 6. **Track data using csv**
+
+
+```bash
+dvc add raw_data.csv
+git add raw_data.csv raw_data.csv.dvc .gitignore
+git commit -m "Add raw weather data"
+dvc push
+
+dvc add processed_data.csv
+git add processed_data.csv processed_data.csv.dvc
+git commit -m "Add processed weather data"
+dvc push
+
+  
+```
+
+### 7. **Setup And Initializa Airflow**
+
+
+```bash
+airflow db init
+airflow webserver --port 8080
+airflow scheduler
+```
+
+
+
+
 
 
