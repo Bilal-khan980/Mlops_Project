@@ -48,8 +48,8 @@ Before you begin, ensure the following are installed on your system:
 ### 1. **Clone the Repository**
 ```bash
 
-git clone https://github.com/<your-username>/weather-prediction-system.git
-cd weather-prediction-system 
+git clone https://github.com/bilalkhan980/Mlops_Project.git
+cd Mlops_Project 
 ```
 
 ### 2. **Make a Virtual Environment**
